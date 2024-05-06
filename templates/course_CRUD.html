@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>This is Course CRUD page</h1>
+    <form action="">
+        <h2>Add New data</h2>
+        <label for="">module_no</label><br>
+        <input type="text"><br>
+        <label for="">module</label><br>
+        <input type="text"><br>
+        <label for="">id</label><br>
+        <input type="text"><br>
+        <label for="">topics</label><br>
+        <input type="text"><br>
+        <button>Add</button>
+    </form>
+    <br>
+    <form action="">
+        <h2>Edit exist data</h2>
+        old data
+        <label for="">module_no</label><br>
+        <input type="text"><br>
+        <label for="">module</label><br>
+        <input type="text"><br>
+        <label for="">id</label><br>
+        <input type="text"><br>
+        <label for="">topics</label><br>
+        <input type="text"><br>
+        new data
+        <label for="">module_no</label><br>
+        <input type="text"><br>
+        <label for="">module</label><br>
+        <input type="text"><br>
+        <label for="">id</label><br>
+        <input type="text"><br>
+        <label for="">topics</label><br>
+        <input type="text"><br>
+        <button>Change</button>
+    </form>
+    <br>
+    <a href="/">
+        <button>Home</button>
+    </a>
+{% endblock %}

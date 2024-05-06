@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Courses We Offer !</h1>
+<div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;">
+    {% for row in data %}
+    <div class="card">
+        <h3>{{row[0]}} . {{row[1]}}</h3>
+        <h5>Tech: {{row[2]}}</h5>
+        <h5>Duration: {{row[3]}}</h5>
+        <h5>Price: {{row[4]}}</h5>
+        <button>buy</button>
+        <a href="/course_details/{{row[0]}}"><button>details</button></a>
+    </div>
+    {% endfor %}
+{% endblock %}

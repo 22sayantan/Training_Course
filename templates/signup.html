@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>This is signup page</h1>
+    <form action="#" method="post">
+        <label for="name">name</label><br>
+        <input type="text" name="name"><br>
+        <label for="email">email</label><br>
+        <input type="email" name="email"><br>
+        <button type="submit">submit</button>
+    </form>
+    <h5>already a member?<a href="/signin">sign in</a></h5>
+{% endblock %}
