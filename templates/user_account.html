@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .header {
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .content {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        .chart-container {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .chart {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Student Dashboard</h2>
+    <a href="#profile">Profile</a>
+    <a href="#marks">Marks</a>
+    <a href="#graphs">Graphs</a>
+    <a href="#logout">Logout</a>
+</div>
+
+<div class="main-content">
+    <div class="header">
+        <h1>Welcome, Student!</h1>
+    </div>
+    <div class="content">
+        <div class="card" id="profile">
+            <h3>Profile</h3>
+            <p>Name: John Doe</p>
+            <p>Email: johndoe@example.com</p>
+            <p>Major: Computer Science</p>
+        </div>
+
+        <div class="card" id="marks">
+            <h3>Marks</h3>
+            <ul>
+                <li>Introduction to Programming: A</li>
+                <li>Data Structures: B+</li>
+                <li>Algorithms: A-</li>
+                <li>Databases: B</li>
+            </ul>
+        </div>
+
+        <div class="card" id="graphs">
+            <h3>Performance Graphs</h3>
+            <div class="chart-container">
+                <canvas id="marksChart" class="chart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('marksChart').getContext('2d');
+    const marksChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Introduction to Programming', 'Data Structures', 'Algorithms', 'Databases'],
+            datasets: [{
+                label: 'Marks',
+                data: [95, 85, 90, 80],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

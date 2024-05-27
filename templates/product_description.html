@@ -1,33 +1,45 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>This is Course details page</h1>
-    <h2>Course Title: {{data2[1]}}</h2>
-    <h4>Tech-Stack: {{data2[2] }}</h4>
-    <h5>Duration: {{data2[3]}}</h5>
-    <h5>Price: <strike>{{data2[4]}}</strike> {{data2[4]}}</h5>
-    <div>
-        {% for k in data4.keys() %}
-        <div>
-            <h3 style="text-transform: capitalize;">{{k}}. {{data4[k]}}</h3>
-            {% for p in data10.keys() %}
-            <div>
-                {% if p == data4[k] %}
-                <ol type="a">
-                    {% for j in data10[p] %}
-                        <li>
-                            <p>{{j}}</p> 
-                        </li>
-                    {% endfor %}
-                </ol>
-                {% endif %}           
-            </div>
-            {% endfor %}
-        </div>
+{% extends 'base.html' %} {% block content %}
+<h1>This is Course details page</h1>
+<h2>Course Title: {{data2[1]}}</h2>
+<h4>Tech-Stack: {{data2[2] }}</h4>
+<h5>Duration: {{data2[3]}}</h5>
+<h5>Price: <strike>{{data2[4]}}</strike> {{data2[4]}}</h5>
+<div>
+  {% for k in data4.keys() %}
+  <div
+    class="index_head"
+    style="
+      background-color: #eee;
+      width: 21rem;
+      padding-bottom: 2px;
+      border-radius: 5px;
+      text-transform: capitalize;
+    "
+  >
+    <h3 class="index_heading" style="text-transform: capitalize">
+      <a href="/course_details/{{data2[0]}}/{{data4[k]}}" style="text-decoration: none;">{{k}}. {{data4[k]}}</a>
+    </h3>
+    {% for p in data10.keys() %}
+    <div class="index_details">
+      {% if p == data4[k] %}
+      <ol type="A">
+        {% for j in data10[p] %}
+        <li>
+          <p>{{j}}</p>
+        </li>
         {% endfor %}
+      </ol>
+      {% endif %}
     </div>
-    {% include 'test.html' %}
-    <a href="/">
-        <button>Home</button>
-    </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% include 'test.html' %}
+<a href="/">
+  <button>Home</button>
+</a>
+
+<script>
+</script>
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<h1>{{module}}</h1>
+
+<!-- <h4>{{data}}</h4> -->
+<ol>
+  {% for row in data %}
+  <li type="A"><h4>{{row[3]}}</h4></li>
+  <div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+      adipisci nisi laudantium doloremque debitis, et exercitationem natus!
+      Facere, repudiandae laboriosam.
+    </p>
+  </div>
+  {% endfor %}
+</ol>
+<div>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/Qr4QMBUPxWo?si=OTgKHsWSNSF5whOP"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
+{% endblock %}

@@ -1,24 +1,188 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
 
-{% block content %}
-    <h1>This is dashboard page</h1>
-    <div>
-        <div>
-            <h2>Widget 1</h2>
-            <p>This is the content of Widget 1.</p>
-        </div>
-        <div>
-            <h2>Widget 2</h2>
-            <p>This is the content of Widget 2.</p>
-        </div>
-        <div>
-            <h2>Widget 3</h2>
-            <p>This is the content of Widget 3.</p>
-        </div>
-        <!-- Add more widgets as needed -->
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  section {
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar {
+    margin: auto;
+    width: 90%;
+    background-color: #f2f2f2;
+
+    display: flex;
+    flex: 4;
+    margin-bottom: 3rem;
+  }
+
+  .sidebar ul {
+    flex: 6;
+    list-style: none;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-around;
+    margin-left: 2rem;
+  }
+
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+
+  .sidebar a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .sidebar li:hover{
+    font-weight: bold;
+    transform: scale(1.4);
+  }
+  .content {
+    flex: 3;
+  }
+
+  .graph-placeholder {
+    width: fit-content;
+    height: fit-content;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 200px;
+    padding: 1rem;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #f2f2f2;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+</style>
+<header>
+  <h1>Student Dashboard</h1>
+</header>
+
+<main>
+  <section class="sidebar">
+    <h2>Welcome, [Student Name]</h2>
+    <h2>Student Marks</h2>
+    <ul>
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">Assignments</a></li>
+      <li><a href="#">Grades</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <table>
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>English</td>
+            <td>85</td>
+          </tr>
+          <tr>
+            <td>Mathematics</td>
+            <td>90</td>
+          </tr>
+          <tr>
+            <td>Science</td>
+            <td>78</td>
+          </tr>
+          <tr>
+            <td>History</td>
+            <td>82</td>
+          </tr>
+        </tbody>
+      </table>
+  </section>
+
+  <section class="content">
+    <h2>Performance Overview</h2>
+    <div class="graph-placeholder">
+      <canvas id="myChart"></canvas>
     </div>
+    <p>Here's a summary of your recent performance...</p>
+  </section>
+</main>
 
-    <a href="/">
-        <button>Home</button>
-    </a>
+<footer>
+  <p>&copy; 2024 School Name</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById("myChart").getContext("2d");
+  const myChart = new Chart(ctx, {
+    type: "bar", // You can choose other chart types like 'line', 'pie', etc.
+    data: {
+      labels: ["Subject 1", "Subject 2", "Subject 3", "subject4"],
+      datasets: [
+        {
+          label: "Student Performance",
+          data: [70, 85, 60, 40],
+          backgroundColor: ["#2980b9", "#f39c12", "#9b59b6", "#333ddd"],
+        },
+      ],
+    },
+    options: {
+      // Chart configuration options like scales, legend, etc.
+    },
+  });
+</script>
+
+<a href="/">
+  <button>Home</button>
+</a>
 {% endblock %}

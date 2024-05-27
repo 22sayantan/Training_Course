@@ -2,42 +2,18 @@
 
 {% block content %}
     <h1>This is Course CRUD page</h1>
-    <form action="">
-        <h2>Add New data</h2>
-        <label for="">module_no</label><br>
-        <input type="text"><br>
-        <label for="">module</label><br>
-        <input type="text"><br>
-        <label for="">id</label><br>
-        <input type="text"><br>
-        <label for="">topics</label><br>
-        <input type="text"><br>
-        <button>Add</button>
+    <form action="#" method="POST">
+        <h2>Add New Course</h2>
+        <label for="title">title</label><br>
+        <input type="text" name="title"><br>
+        <label for="tech">tech</label><br>
+        <input type="text" name="tech"><br>
+        <label for="duration">duration</label><br>
+        <input type="text" name="duration"><br>
+        <label for="price">price</label><br>
+        <input type="text" name="price"><br><br>
+        <button type="submit">Add</button>
     </form>
-    <br>
-    <form action="">
-        <h2>Edit exist data</h2>
-        old data
-        <label for="">module_no</label><br>
-        <input type="text"><br>
-        <label for="">module</label><br>
-        <input type="text"><br>
-        <label for="">id</label><br>
-        <input type="text"><br>
-        <label for="">topics</label><br>
-        <input type="text"><br>
-        new data
-        <label for="">module_no</label><br>
-        <input type="text"><br>
-        <label for="">module</label><br>
-        <input type="text"><br>
-        <label for="">id</label><br>
-        <input type="text"><br>
-        <label for="">topics</label><br>
-        <input type="text"><br>
-        <button>Change</button>
-    </form>
-    <br>
     <a href="/">
         <button>Home</button>
     </a>

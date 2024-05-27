@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .profile-container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .profile-header h1 {
+            margin: 0;
+        }
+        .profile-section {
+            margin-bottom: 20px;
+        }
+        .profile-section h2 {
+            margin-bottom: 10px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        .profile-details {
+            list-style: none;
+            padding: 0;
+        }
+        .profile-details li {
+            margin-bottom: 10px;
+        }
+        .profile-details label {
+            font-weight: bold;
+            display: inline-block;
+            width: 150px;
+        }
+        .profile-details span {
+            display: inline-block;
+        }
+        .update-profile {
+            text-align: center;
+        }
+        .update-profile button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .update-profile button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>User Profile</h1>
+    </div>
+
+    <div class="profile-section">
+        <h2>Personal Information</h2>
+        <ul class="profile-details">
+            <li>
+                <label>Name:</label>
+                <span>John Doe</span>
+            </li>
+            <li>
+                <label>Email:</label>
+                <span>johndoe@example.com</span>
+            </li>
+            <li>
+                <label>Phone:</label>
+                <span>(123) 456-7890</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="profile-section">
+        <h2>Account Details</h2>
+        <ul class="profile-details">
+            <li>
+                <label>Username:</label>
+                <span>john_doe</span>
+            </li>
+            <li>
+                <label>Member Since:</label>
+                <span>January 1, 2020</span>
+            </li>
+            <li>
+                <label>Last Login:</label>
+                <span>May 25, 2024</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="profile-section">
+        <h2>Address</h2>
+        <ul class="profile-details">
+            <li>
+                <label>Street:</label>
+                <span>123 Main St</span>
+            </li>
+            <li>
+                <label>City:</label>
+                <span>Springfield</span>
+            </li>
+            <li>
+                <label>State:</label>
+                <span>IL</span>
+            </li>
+            <li>
+                <label>Zip Code:</label>
+                <span>62704</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="update-profile">
+        <button onclick="alert('Update Profile Clicked')">Update Profile</button>
+    </div>
+</div>
+
+</body>
+</html>

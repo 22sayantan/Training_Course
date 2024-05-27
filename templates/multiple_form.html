@@ -1,0 +1,29 @@
+<div class="add_form" >
+    <form class="add_course" action="" method="post" style="display: none;">
+        <label for="title">title</label><br>
+        <input type="text" name="title"><br>
+        <label for="tech">tech</label><br>
+        <input type="text" name="tech"><br>
+        <label for="duration">duration</label><br>
+        <input type="text" name="duration"><br>
+        <label for="price">price</label><br>
+        <input type="text" name="price"><br>
+        <button type="submit">submit</button>
+    </form>
+    <form class="add_course_module" action="" method="post" style="display: none;">
+        <label for="course">course</label><br>
+        <select name="course" id="">
+            <option value="">select course</option>
+            {% for i in titles %}
+            <option value="{{i[0]}}">{{i[0]}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="module_no">module_no</label><br>
+        <input type="number" name="module_no"><br>
+        <label for="module">module</label><br>
+        <input type="text" name="module"><br>
+        <label for="topics">topics</label><br>
+        <input type="text" name="topics"><br>
+        <button type="submit">submit</button>
+    </form>
+</div>

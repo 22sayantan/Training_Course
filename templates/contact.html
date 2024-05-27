@@ -1,9 +1,96 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>This is Contact page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
 
-{% block content %}
-    <h1>This is Contact page</h1>
-    {% include 'test.html' %}
-    <a href="/">
-        <button>Home</button>
-    </a>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+textarea {
+  height: 150px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45A049;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Contact Us</h1>
+  <p>Get in touch with us using the form below.</p>
+
+  <form action="form-handler.php" method="post">  <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Your Name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="youremail@example.com">
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p>Alternatively, you can reach us at:</p>
+  <ul>
+    <li>Phone: 123-456-7890</li>
+    <li>Email: contact@example.com</li>
+  </ul>
+</body>
+</html>
+
+<a href="/">
+  <button>Home</button>
+</a>
 {% endblock %}

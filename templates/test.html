@@ -1,4 +1,146 @@
-<div>
-    <h1>{{ data2[4]}} </h1>
-    
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Account Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 50%;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>User Account</h1>
+      <form id="accountForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value="john_doe"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="john.doe@example.com"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value="123-456-7890"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            value="123 Main St, Anytown, USA"
+            disabled
+          />
+        </div>
+        <button type="button" id="editButton" onclick="editAccount()">
+          Edit
+        </button>
+        <button
+          type="button"
+          id="saveButton"
+          onclick="saveAccount()"
+          style="display: none"
+        >
+          Save
+        </button>
+      </form>
+    </div>
+    <script>
+      function editAccount() {
+        // Enable all input fields
+        document.querySelectorAll("#accountForm input").forEach((input) => {
+          input.disabled = false;
+        });
+
+        // Hide the edit button and show the save button
+        document.getElementById("editButton").style.display = "none";
+        document.getElementById("saveButton").style.display = "block";
+      }
+
+      function saveAccount() {
+        // Disable all input fields
+        document.querySelectorAll("#accountForm input").forEach((input) => {
+          input.disabled = true;
+        });
+
+        // Hide the save button and show the edit button
+        document.getElementById("editButton").style.display = "block";
+        document.getElementById("saveButton").style.display = "none";
+
+        // Here you would typically send the updated data to the server
+        alert("Account information saved!");
+      }
+    </script>
+  </body>
+</html>

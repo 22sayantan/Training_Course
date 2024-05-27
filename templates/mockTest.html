@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mock Test Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 50%;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .question {
+        margin-bottom: 20px;
+      }
+
+      .question p {
+        margin: 0;
+      }
+
+      label {
+        display: block;
+        margin: 5px 0;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background: #218838;
+      }
+
+      #result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 20px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mock Test</h1>
+      <form id="testForm">
+        <div class="question">
+          <p>1. What is the capital of France?</p>
+          <label><input type="radio" name="q1" value="a" /> Berlin</label>
+          <label><input type="radio" name="q1" value="b" /> Madrid</label>
+          <label><input type="radio" name="q1" value="c" /> Paris</label>
+          <label><input type="radio" name="q1" value="d" /> Rome</label>
+        </div>
+        <div class="question">
+          <p>2. Which planet is known as the Red Planet?</p>
+          <label><input type="radio" name="q2" value="a" /> Earth</label>
+          <label><input type="radio" name="q2" value="b" /> Mars</label>
+          <label><input type="radio" name="q2" value="c" /> Jupiter</label>
+          <label><input type="radio" name="q2" value="d" /> Saturn</label>
+        </div>
+        <div class="question">
+          <p>3. Who wrote 'To Kill a Mockingbird'?</p>
+          <label><input type="radio" name="q3" value="a" /> Harper Lee</label>
+          <label><input type="radio" name="q3" value="b" /> J.K. Rowling</label>
+          <label
+            ><input type="radio" name="q3" value="c" /> Ernest Hemingway</label
+          >
+          <label><input type="radio" name="q3" value="d" /> Mark Twain</label>
+        </div>
+        <button type="button" onclick="submitTest()">Submit</button>
+      </form>
+      <div id="result"></div>
+    </div>
+    <script>
+      function submitTest() {
+        const correctAnswers = {
+          q1: "c",
+          q2: "b",
+          q3: "a",
+        };
+
+        let score = 0;
+        const totalQuestions = Object.keys(correctAnswers).length;
+
+        const form = document.getElementById("testForm");
+        const formData = new FormData(form);
+
+        for (const [question, answer] of formData.entries()) {
+          if (answer === correctAnswers[question]) {
+            score++;
+          }
+        }
+
+        const result = document.getElementById("result");
+        result.innerHTML = `You scored ${score} out of ${totalQuestions}`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+.course_list{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.course_list .card{
+    width: 18rem;
+    border: 1px solid #cccccc;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: #777777 5px 5px 5px ;
+    line-height: 0.1rem;
+    text-wrap: wrap;
+}
+
+.course_list .card h5{
+    margin-left: 15px;
+    color: #444777;
+    font-size: 14px;
+}
+
+.index_heading{
+    height: 2rem;
+    width: 20rem;
+    background-color: lightgrey;
+    border-radius: 5px 5px 0px 0px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 1rem;
+
+    font-family: sans-serif;
+    font-size: 1.3rem;
+}
