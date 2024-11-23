@@ -1,20 +1,54 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>This is Course CRUD page</h1>
 
-{% block content %}
-    <h1>This is Course CRUD page</h1>
-    <form action="#" method="POST">
-        <h2>Add New Course</h2>
-        <label for="title">title</label><br>
-        <input type="text" name="title"><br>
-        <label for="tech">tech</label><br>
-        <input type="text" name="tech"><br>
-        <label for="duration">duration</label><br>
-        <input type="text" name="duration"><br>
-        <label for="price">price</label><br>
-        <input type="text" name="price"><br><br>
-        <button type="submit">Add</button>
-    </form>
-    <a href="/">
-        <button>Home</button>
-    </a>
+<form id="myForm">
+  <p>Select your choice:</p>
+  <input
+    type="radio"
+    id="course"
+    name="color"
+    value="course"
+    onchange="getSelectedColor()"
+    checked
+  />
+  Course
+  <input
+    type="radio"
+    id="module"
+    name="color"
+    value="module"
+    onchange="getSelectedColor()"
+  />
+  Module <br />
+  <p id="result"></p>
+</form>
+
+<form id="new_course" action="#" method="POST">
+  <h2>Add New Course</h2>
+  <label for="title">title</label><br />
+  <input type="text" name="title" /><br />
+  <label for="tech">tech</label><br />
+  <input type="text" name="tech" /><br />
+  <label for="duration">duration</label><br />
+  <input type="text" name="duration" /><br />
+  <label for="price">price</label><br />
+  <input type="text" name="price" /><br />
+  <input type="submit" value="Submit" />
+</form>
+
+<form id="new_module" action="#" method="POST">
+  <h2>Add New Module</h2>
+  <label for="title">title</label><br />
+  <input type="text" name="title" /><br />
+  <label for="tech">tech</label><br />
+  <input type="text" name="tech" /><br />
+  <label for="duration">duration</label><br />
+  <input type="text" name="duration" /><br />
+</form>
+<script src="{{url_for('static',filename = 'crud.js')}}"></script>
+
+<a href="/">
+  <button>Home</button>
+</a>
+
 {% endblock %}

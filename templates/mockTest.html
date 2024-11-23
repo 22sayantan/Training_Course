@@ -65,28 +65,12 @@
     <div class="container">
       <h1>Mock Test</h1>
       <form id="testForm">
+        {% for index, q in ques %}
         <div class="question">
-          <p>1. What is the capital of France?</p>
-          <label><input type="radio" name="q1" value="a" /> Berlin</label>
-          <label><input type="radio" name="q1" value="b" /> Madrid</label>
-          <label><input type="radio" name="q1" value="c" /> Paris</label>
-          <label><input type="radio" name="q1" value="d" /> Rome</label>
-        </div>
-        <div class="question">
-          <p>2. Which planet is known as the Red Planet?</p>
-          <label><input type="radio" name="q2" value="a" /> Earth</label>
-          <label><input type="radio" name="q2" value="b" /> Mars</label>
-          <label><input type="radio" name="q2" value="c" /> Jupiter</label>
-          <label><input type="radio" name="q2" value="d" /> Saturn</label>
-        </div>
-        <div class="question">
-          <p>3. Who wrote 'To Kill a Mockingbird'?</p>
-          <label><input type="radio" name="q3" value="a" /> Harper Lee</label>
-          <label><input type="radio" name="q3" value="b" /> J.K. Rowling</label>
-          <label
-            ><input type="radio" name="q3" value="c" /> Ernest Hemingway</label
-          >
-          <label><input type="radio" name="q3" value="d" /> Mark Twain</label>
+            <h3>{{q}}</h3>
+            <label for=""><input type="radio" name="ans_{{index}}" id="">Yes</label>
+            <label for=""><input type="radio" name="ans_{{index}}" id="">No</label>
+          {% endfor %}
         </div>
         <button type="button" onclick="submitTest()">Submit</button>
       </form>

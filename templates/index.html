@@ -1,5 +1,14 @@
 {% extends 'base.html' %} {% block content %}
-<h1 style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: 3rem;color: blue;">Courses We Offer !</h1>
+<h1
+  style="
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3rem;
+    color: blue;
+  "
+>
+  Courses We Offer !
+</h1>
 <div class="course_list">
   {% for row in data %}
   <div class="card">
@@ -7,8 +16,8 @@
     <h5>Tech: {{row["tech"]}}</h5>
     <h5>Duration: {{row["duration"]}}</h5>
     <h5>Price: {{row["price"]}}</h5>
-    <button>buy</button>
-    <a href="/course_details/{{row[0]}}"><button>details</button></a>
+    <a href="/buy"><button>buy</button></a>
+    <a href="/course_details/{{row['id']}}"><button>details</button></a>
   </div>
   {% endfor %}
 </div>

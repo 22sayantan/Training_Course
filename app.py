@@ -1,33 +1,44 @@
-from flask import Flask,render_template,request,url_for,jsonify,json
+import json
+import random
+
+from flask import Flask, render_template, request, url_for, jsonify, json
 from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text
 from sqlalchemy.dialects.mysql import MEDIUMTEXT
 
 app = Flask(__name__)
 
 # creade db variable using SQLAlchemy:::
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:MyNewPass@localhost/courses'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# engine = create_engine('mysql+mysqlconnector://root:MyNewPass@localhost/courses')
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    "mysql+mysqlconnector://root:PassWord123@localhost/courses"
+)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-# Configure mysql database connection:::
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'MyNewPass'
-# app.config['MYSQL_DB'] = 'courses'
-
-# mysql = MySQL(app)
 
 # define table :::
 class Course(db.Model):
-    __tablename__ = 'course_list'
-    id = db.Column(db.Integer,primary_key = True)
+    __tablename__ = "course_list"
+    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50))
     tech = db.Column(db.String(50))
     duration = db.Column(db.String(30))
     price = db.Column(db.Float)
 
-@app.route('/')
+    def Cousrse_list(self):
+        return [self.id, self.title, self.tech, self.duration]
+
+
+class User(db.Model):
+    __tablename__ = "user"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+    email = db.Column(db.String(50))
+
+
+@app.route("/")
 def index():
     courses = Course.query.all()
     courseList = []
@@ -39,168 +50,169 @@ def index():
         courseDict["duration"] = course.duration
         courseDict["price"] = course.price
         courseList.append(courseDict)
-    return render_template('/index.html',data = courseList)
+    return render_template("/index.html", data=courseList)
 
-@app.route('/signup',methods=['POST','GET'])
+
+@app.route("/signup", methods=["POST", "GET"])
 def signup():
-    if request.method == 'POST':
+    if request.method == "POST":
         details = request.form
-        name = details['name']
-        email = details['email']
-        print(name,email)
-        # cur = mysql.connection.cursor()
-        # cur.execute('INSERT INTO User(name,email) VALUES (%s,%s)',(name,email))
-        # mysql.connection.commit()
-        # cur.close()
-        # return 'sucess'
-    return render_template('signup.html')
+        name = details["name"]
+        email = details["email"]
+        newUser = User(name=name, email=email)
 
-@app.route('/contact')
+        try:
+            db.session.add(newUser)
+            db.session.commit()
+
+            query1 = text("set @num := 0")
+            query2 = text("update user set id = @num := (@num+1)")
+            db.session.execute(query1)
+            db.session.execute(query2)
+            db.session.commit()
+            return f"sucessfully added new user", 201
+        except Exception as e:
+            db.session.rollback()
+            return f"An error occurred : {str(e)}", 500
+
+    return render_template("signup.html")
+
+
+@app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    return render_template("contact.html")
 
-@app.route('/about/',methods=['POST','GET'])
+
+@app.route("/about/", methods=["POST", "GET"])
 def about():
-    cur = mysql.connection.cursor()
-    cur.execute('select title from course_list')
-    title_list = cur.fetchall()
-    cur.close()
+    return render_template("about.html")
 
-    if 'title' in request.form:
+
+@app.route("/signin")
+def singin():
+    if request.method == "POST":
+        login_details = request.form
+        email = login_details["email"]
+        password = login_details["passwd"]
+        # 1. if email match in database user list
+        # 2. match paswword (hash type) also
+        # 3. then redirect to index page or account page
+        # 4. else redirect to singin html w/ flash message of
+        # return redirect('/')
+        # else:
+    return render_template("/signin.html")
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("/dashboard_admin.html")
+
+
+@app.route("/course_details/<int:id>")
+def course_details(id):
+    course_bio = Course.query.filter_by(id=f"{id}").first()
+
+    query2 = text(f"select distinct module_no,module from course_{id}_modules")
+    data = db.session.execute(query2)
+    modules = data.fetchall()
+
+    query3 = text(f"select module,id,topics from course_{id}_modules")
+    data2 = db.session.execute(query3)
+    topics = data2.fetchall()
+
+    db.session.commit()
+
+    return render_template(
+        "/product_description.html", course=course_bio, modules=modules, topics=topics
+    )
+
+
+@app.route("/update", methods=["POST", "GET"])
+def update():
+    # fetch form data:::
+    if request.method == 'POST':
         title = request.form['title']
         tech = request.form['tech']
         duration = request.form['duration']
         price = request.form['price']
         print(title,tech,duration,price)
+        return render_template('/course_CRUD.html')
+    else:
+        return render_template('/course_CRUD.html')
 
-    elif 'module_no' in request.form:
-        module_no = request.form['module_no']
-        module = request.form['module']
-        topics = request.form['topics']
-        course = request.form['course']
-        print(module_no,module,topics,course)
 
-    return render_template('about.html',titles = title_list)
-
-@app.route('/signin')
-def singin():
-    if request.method == 'POST':
-        login_details = request.form
-        email = login_details['email']
-        password = login_details['passwd']
-        cur =mysql.connection.cursor()
-        if (cur.execute(f"select * from User where email = '{email}'")):
-            mysql.connection.cursor()
-            cur.close()
-            return redirect('/contact')
-        else:
-            return render_template('/signin.html')
-
-@app.route('/dashboard')
-def dashboard():
-    return render_template('/dashboard.html')
-
-@app.route('/course_details/<int:id>')
-def course_details(id):
-    my_id = id
-    cur = mysql.connection.cursor()
-    cur.execute(f'select * from course_list where id = {id}')
-    data2 = cur.fetchone()
-    price = format(data2[4],'.2f')
-    cur.execute(f'select * from course_{id}_modules')
-    data3 = cur.fetchall()
-    data3_list = list()
-    for x in data3:
-        # print(my_id)
-        temp_data = list(x)
-        data3_list.append(temp_data[:2])
-    data4 = dict(data3_list)
-    data5 = list(data4.keys())
-    data6 = list(data4.values())
-    data10 = {}
-    for key in data5:
-        cur.execute(f'select topics from course_{my_id}_modules where module_no = {key}')
-        data7 = cur.fetchall()
-        data8 = list(data7)
-        data9 = []
-        for e in data8:
-            data9.append(e[0])
-            data10[data4[key]] = data9
-    print(data10)
-    cur.close()
-    return render_template('/product_description.html',data2 =  data2,data4 = data4,data10 = data10,price = price)
-
-@app.route('/update',methods=['POST','GET'])
-def update():
-    # fetch form data:::
-    if request.method == 'POST':
-        form_data = request.form
-        title = form_data['title']
-        tech = form_data['tech']
-        duration = form_data['duration']
-        price = form_data['price']
-        # create mysql cursor:::
-        cur = mysql.connection.cursor()
-        
-        # execute query::
-        cur.execute('INSERT INTO courses.course_list (title,tech,duration,price) values (%s,%s,%s,%s)',(title,tech,duration,price))
-        # make changes sql query::::
-        mysql.connection.commit()
-
-        cur.execute('SELECT COUNT(*) as ROW_COUNT FROM course_list')
-        count = cur.fetchone()
-        
-        cur.execute(f'CREATE TABLE course_{count[0]}_modules (module_no int,module varchar(30),id int primary key auto_increment,topics varchar(100))')
-        mysql.connection.commit()
-        # close cursor::::
-        cur.close()
-        # return success:::
-        return f'{count[0]} no Course created Successfully! '
-    return render_template('/course_CRUD.html')
-
-@app.route('/mockTest')
+@app.route("/mockTest")
 def mockTest():
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT questions,topics from study.interview_questions order by rand() limit 8')
-    data = list(cur.fetchall())
-    cur.close()
-    ques = list()
-    topics =list()
-    for i in data:
-        ques.append(i[0])
-        topics.append(i[1])
-    return render_template('/mockTest.html', ques = ques, topics = topics)
+    query = text(
+        "select question,option_1,option_2,option_3,option_4 from study.general_knowledge order by rand() limit 5"
+    )
+    data = db.session.execute(query)
+    ques_set = data.fetchall()
 
-@app.route('/submited')
+    db.session.commit()
+
+    with open("test.json", "r") as f:
+        data = json.load(f)
+    temp_list = []
+
+    for i in range(5):
+        random_number = random.randint(1, 6)
+        temp_list.append(random_number)
+
+    ques_id_list = list(set(temp_list[:2]))
+
+    Q_set = []
+    for k in ques_id_list:
+        for l in range(len(data)):
+            if data[l]["id"] == k:
+                Q_set.append(data[l]['Q'])
+    
+    Q_set = enumerate(Q_set)
+    print(Q_set)
+    return render_template("/mockTest.html", ques=Q_set)
+
+
+@app.route("/submit")
 def submission():
-    return render_template('/submited.html')
+    return render_template("/submited.html")
 
-@app.route('/course_details/<int:id>/<string:module>')
-def module(id,module):
-    cur = mysql.connection.cursor()
-    cur.execute(f'select * from courses.course_{id}_modules where module = "{module}"')
-    data = cur.fetchall()
-    cur.close()
-    return render_template('/course_content.html',data = data ,module = module)
 
-@app.route('/user/<int:id>')
+@app.route("/course_details/<int:id>/<string:module>")
+def module(id, module):
+
+    query1 = text(
+        f"select id,topics from course_{id}_modules where module like '{module}'"
+    )
+    data = db.session.execute(query1)
+    topics = data.fetchall()
+
+    return render_template("/course_content.html", module=module, topics=topics)
+
+
+@app.route("/user/<int:id>")
 def user_details(id):
     cur = mysql.connection.cursor()
     # write your user fetch sql code with cur at below:::
     cur.close()
-    return render_template('/user_account.html',id = id)
+    return render_template("/user_account.html", id=id)
 
-@app.route('/user/<int:id>/profile')
+
+@app.route("/user/<int:id>/profile")
 def userProfile(id):
     cur = mysql.connection.cursor()
     # write your user fetch sql code with cur at below:::
     cur.close()
-    return render_template('/userProfile.html',id = id)
+    return render_template("/userProfile.html", id=id)
 
 
-@app.route('/test')
+@app.route("/test")
 def test():
-    return render_template('/test.html')
-    
-if __name__ == '__main__':
+    return render_template("/test.html")
+
+@app.route("/buy")
+def buy_page():
+    return render_template("/buy_page.html")
+
+
+if __name__ == "__main__":
     app.run(debug=True)

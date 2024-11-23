@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        text-transform: capitalize;
+      }
+
+      h1,
+      div {
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px lightgrey;
+        margin-bottom: 10px;
+        padding: 10px;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+      }
+
+      p {
+        margin-left: 1rem;
+      }
+
+      h4 {
+        margin-left: 1rem;
+      }
+
+      .table_data{
+        display: grid;
+        margin-left: 2rem;
+
+        & th{
+            font-size: 18px;
+            color: blue;
+        }
+        & td{
+            width: 3rem;
+        }
+        & th:last-child,td:last-child{
+            width: 10rem;
+        }
+        & td:last-child{
+            padding-left: 1.4rem;
+        }
+      }
+
+      .update{
+        flex-direction: column;
+        align-items: start;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Teacher Dashboard !</h1>
+
+    <section>
+      <h1>Welcome, {Teacher Name}</h1>
+    </section>
+
+    <section>
+      <div>
+        <h2>Grade</h2>
+        <p>A</p>
+      </div>
+      <div>
+        <h2>Total Feedback</h2>
+        <p>100</p>
+      </div>
+      <div>
+        <h2>student reaction</h2>
+        <p>happy</p>
+        <p>satisfied</p>
+        <p>sad</p>
+      </div>
+      <div>
+        <h2>Profile</h2>
+        <table class="table_data">
+                <thead>
+                    <tr>
+                        <th>index</th>
+                        <th>content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Name </b></td>
+                        <td>sayantan dolui</td>
+                    </tr>
+                    <tr>
+                        <td><b>age </b></td>
+                        <td>30+</td>
+                    </tr>
+                    <tr>
+                        <td><b>sub</b></td>
+                        <td>Math</td>
+                    </tr>
+                    <tr>
+                        <td><b>exp </b></td>
+                        <td>5+</td>
+                    </tr>
+                </tbody>
+        </table>
+      </div>
+
+      <div class="update">
+        <h2>Update !</h2>
+        <nav>
+          <a href="/update_teacher">Profile</a>
+          &emsp;
+          <a href="/update_teacher">Question</a>
+        </nav>
+        
+      </div>
+    </section>
+  </body>
+</html>

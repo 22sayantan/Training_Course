@@ -1,9 +1,46 @@
-<nav class="nav"">
-    <ul style="width: 30%; list-style: none; display: flex; justify-content: space-evenly;">
-        <li><a href="/about">about</a></li>
-        <li><a href="/contact">contact</a></li>
-        <li><a href="/signup">sign up</a></li>
-        <li><a href="/update">update</a></li>
-        <li><a href="/mockTest">mock test</a></li>
+<nav class="nav" style="display: flex; flex-direction: row">
+  <div style="width: 30%">
+    <h2>Code Count</h2>
+  </div>
+  <div style="width: 40%; display: flex; align-items: center;justify-content: center;">
+    <form action="#" method="get">
+      <input
+        type="text"
+        name="search"
+        placeholder="Search..."
+        style="
+          width: 25rem;
+          height: 1.5rem;
+          border-radius: 10px;
+          border: 1px solid grey;
+          padding-left: 10px;
+        "
+      />
+      <button
+        type="submit"
+        style="
+          height: 1.5rem;
+          width: 6rem;
+          border-radius: 6px;
+          border: 1px solid orangered;
+          background-color: transparent;
+          color: orangered;
+          font-weight: bold;
+          font-family: sans-serif;
+          font-size: 1.2rem;
+        "
+      >
+        Search
+      </button>
+    </form>
+  </div>
+  <div style="width: 30%">
+    <ul style="list-style: none; display: flex; justify-content: space-evenly">
+      <li><a href="/about">about</a></li>
+      <li><a href="/contact">contact</a></li>
+      <li><a href="/signup">sign up</a></li>
+      <li><a href="/dashboard">dashboard</a></li>
+      <li><a href="/mockTest">mock test</a></li>
     </ul>
+  </div>
 </nav>
