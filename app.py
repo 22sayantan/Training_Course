@@ -213,6 +213,10 @@ def test():
 def buy_page():
     return render_template("/buy_page.html")
 
+@app.route("/products")
+def products():
+    return render_template("/products.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

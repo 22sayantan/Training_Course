@@ -1,11 +1,13 @@
 {% extends 'base.html' %} {% block content %}
-<h1>{{course.title}}</h1>
+<h1 class="course_title">{{course.title}}</h1>
 
 {% for module in modules %}
 <div class="container">
+  <hr>
   <a href="/course_details/{{course.id}}/{{module[1]}}">
     <h3>{{module[0]}}.&emsp;{{module[1]}}</h3>
   </a>
+  <hr>
     <div class="sub_container">
       {% for topic in topics %}
         {% if topic[0] == module[1] %}

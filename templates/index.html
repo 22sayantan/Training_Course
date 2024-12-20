@@ -12,7 +12,7 @@
 <div class="course_list">
   {% for row in data %}
   <div class="card">
-    <h3>{{row["id"]}}. {{row["title"]}}</h3>
+    <h3> <span class="course_sl_mark">{{row["id"]}}.</span>{{row["title"]}}</h3>
     <h5>Tech: {{row["tech"]}}</h5>
     <h5>Duration: {{row["duration"]}}</h5>
     <h5>Price: {{row["price"]}}</h5>
