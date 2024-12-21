@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='course_details.css')}}"
+/>
+<h1 class="course-title">{{course.title}}</h1>
+
+{% for module in modules %}
+<div class="module-container">
+  <hr />
+  <a href="/course_details/{{course.id}}/{{module[1]}}">
+    <h3>{{module[0]}}.&emsp;{{module[1]}}</h3>
+  </a>
+  <hr />
+  <div class="topics-container">
+    {% for topic in topics %} {% if topic[0] == module[1] %}
+    <h5>&emsp;{{topic[1]}}.&emsp;<span>{{topic[2]}}</span></h5>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+{% endfor %}
+<!-- {% include 'test.html' %} -->
+<a href="/">
+  <button>Home</button>
+</a>
+
+<script src="{{url_for('static',filename='course_details.js')}}"></script>
+{% endblock %}

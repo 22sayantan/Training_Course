@@ -1,61 +1,29 @@
+<link rel="stylesheet" href="{{url_for('static',filename='nav.css')}}" />
 <nav class="nav">
-  <div style="width: 30%" class="brand_name">
-    <h1>Code Count</h1>
+  <div class="brand_name">
+    <h1 class="brand_title">Code Count</h1>
   </div>
-  <div
-    style="
-      width: 40%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    "
-  >
-    <form action="#" method="get">
+  <div class="search_form">
+    <form action="#" method="get" class="search_form_inner"></form>
       <input
         type="text"
         name="search"
         placeholder="Search..."
-        style="
-          width: 25rem;
-          height: 1.5rem;
-          border-radius: 10px;
-          border: 1px solid grey;
-          padding-left: 10px;
-        "
+        class="search_input"
       />
-      <button
-        type="submit"
-        style="
-          height: 1.5rem;
-          width: 6rem;
-          border-radius: 6px;
-          border: 1px solid orangered;
-          background-color: transparent;
-          color: orangered;
-          font-weight: bold;
-          font-family: sans-serif;
-          font-size: 1.2rem;
-        "
-      >
+      <button type="submit" class="search_button">
         Search
       </button>
     </form>
   </div>
-  <div style="width: 30%" class="linked_list">
-    <ul
-      style="
-        list-style: none;
-        display: flex;
-        justify-content: space-evenly;
-        text-transform: capitalize;
-      "
-    >
-      <li><a href="/about">about</a></li>
-      <li><a href="/contact">contact</a></li>
-      <li><a href="/signup">signUp</a></li>
-      <li><a href="/dashboard">dashboard</a></li>
-      <li><a href="/mockTest">mock test</a></li>
-      <li><a href="/products">products</a></li>
+  <div class="linked_list">
+    <ul class="nav_links">
+      <li class="nav_item"><a href="/about" class="nav_link">About</a></li>
+      <li class="nav_item"><a href="/contact" class="nav_link">Contact</a></li>
+      <li class="nav_item"><a href="/signup" class="nav_link">Sign-Up</a></li>
+      <li class="nav_item"><a href="/dashboard" class="nav_link">Dashboard</a></li>
+      <li class="nav_item"><a href="/mockTest" class="nav_link">Mock-Test</a></li>
+      <li class="nav_item"><a href="/products" class="nav_link">Products</a></li>
     </ul>
   </div>
 </nav>

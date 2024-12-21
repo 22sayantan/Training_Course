@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='products.css')}}">
-</head>
-<body>
-    <h1>Products !</h1>
-    <div class="card">
-        <img src="" alt="">
-        <h2>my product</h2>
-        <h4>Price:</h4>
-        <h5>rating:</h5>
-        <h5>seller:</h5>
-    </div>
-</body>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='products.css')}}"
+    />
+  </head>
+  <body>
+    <center>
+      <h1>Products</h1>
+    </center>
+    <section class="product-list">
+      <div class="product-card">
+        <img src="path/to/image.jpg" alt="Product Image" />
+        <h2>Product Name</h2>
+        <h4>Price: $99.99</h4>
+        <h5>Rating: 4.5/5</h5>
+        <h5>Seller: Seller Name</h5>
+      </div>
+      <div class="product-card">
+        <img src="path/to/image2.jpg" alt="Product Image" />
+        <h2>Another Product</h2>
+        <h4>Price: $79.99</h4>
+        <h5>Rating: 4.0/5</h5>
+        <h5>Seller: Another Seller</h5>
+      </div>
+    </section>
+  </body>
 </html>

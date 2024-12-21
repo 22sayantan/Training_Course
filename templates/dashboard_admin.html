@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='admin.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='admin.css')}}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>Admin Panel</h1>
-
+    {% include 'navbar.html' %}
+    <center>
+      <h1>Admin Panel</h1>
+    </center>
     <section>
       <div>
         <h1>Students</h1>
@@ -23,7 +26,7 @@
         <h3>50</h3>
       </div>
     </section>
-    <hr>
+    <hr />
     <section>
       <div>
         <h1>Total Gross Revenue</h1>
@@ -34,5 +37,13 @@
         <h3>$750,000</h3>
       </div>
     </section>
+    <hr />
+    <section class="chart">
+      <h1>Month-on-Month Gross Revenue</h1>
+      <div>
+        <canvas id="revenueChart" width="200" height="100"></canvas>
+      </div>
+    </section>
+    <script src="{{url_for('static',filename='admin.js')}}"></script>
   </body>
 </html>

@@ -123,7 +123,7 @@ def course_details(id):
     db.session.commit()
 
     return render_template(
-        "/product_description.html", course=course_bio, modules=modules, topics=topics
+        "/course_details.html", course=course_bio, modules=modules, topics=topics
     )
 
 

@@ -1,0 +1,82 @@
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(to right, #f4f4f4, #e0e0e0);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 50%;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Playfair Display", serif;
+}
+
+.question {
+  margin: 20px 0;
+}
+
+.question::first-letter{
+    text-transform: capitalize;
+}
+
+.question h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+}
+
+.options li {
+  margin: 15px 0;
+  font-size: 1.1em;
+}
+
+.options input[type="radio"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.btn-sec{
+    width: 30rem;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.submit-btn,.print-btn {
+  display: block;
+  width: 20%;
+  padding: 15px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover,.print-btn:hover {
+  background: linear-gradient(to right, #0056b3, #003f7f);
+  font-size: 1.3em;
+  padding: 10px;
+  font-weight: bold;
+}

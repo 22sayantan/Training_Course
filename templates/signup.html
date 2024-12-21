@@ -1,13 +1,73 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h2 class="signup-header">Sign Up</h2>
+<form action="/signup" method="post" class="signup-form">
+    <div class="form-container">
+        <label for="username" class="form-label"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" class="form-input" required>
 
-{% block content %}
-    <h1>This is signup page</h1>
-    <form action="#" method="post">
-        <label for="name">name</label><br>
-        <input type="text" name="name"><br>
-        <label for="email">email</label><br>
-        <input type="email" name="email"><br>
-        <button type="submit">submit</button>
-    </form>
-    <h5>already a member?<a href="/signin">sign in</a></h5>
+        <label for="email" class="form-label"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" class="form-input" required>
+
+        <label for="password" class="form-label"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" class="form-input" required>
+
+        <label for="confirm_password" class="form-label"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="confirm_password" class="form-input" required>
+
+        <button type="submit" class="submit-button">Sign Up</button>
+    </div>
+</form>
+
+<style>
+    .form-container {
+        width: 50%;
+        margin: auto;
+        padding: 16px;
+        background-color: white;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .form-input:focus {
+        opacity: 1;
+        outline: none;
+        border-bottom: 2px solid darkgray;
+        scale: 1.1;
+    }
+
+    .submit-button {
+        width: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        background: linear-gradient(45deg, #ff6b6b, #f06595);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.9;
+        font-size: 24px;
+    }
+
+    .submit-button:hover {
+        opacity: 1;
+    }
+
+    .signup-header {
+        text-align: center;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+</style>
 {% endblock %}
