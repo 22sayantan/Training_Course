@@ -7,9 +7,8 @@
   <form id="testForm">
     {% for index, q in ques %}
     <div class="question">
-      <h3>{{q}}</h3>
-      <label for=""><input type="radio" name="ans_{{index}}" id="" />Yes</label>
-      <label for=""><input type="radio" name="ans_{{index}}" id="" />No</label>
+      <h3>{{index+1}}) {{q['Questions']}}</h3>
+      <h5 style="font-weight: normal;">[Q-id: {{q['Q_id']}}, Level: {{q['level']}}, topics: {{q['topics']}}, category:{{q['category']}}]</h5>
       {% endfor %}
     </div>
     <div class="btn-sec">

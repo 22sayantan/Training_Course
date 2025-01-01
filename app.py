@@ -144,32 +144,37 @@ def update():
 @app.route("/mockTest")
 def mockTest():
     query = text(
-        "select question,option_1,option_2,option_3,option_4 from study.general_knowledge order by rand() limit 5"
+        "select * from study.interview_questions order by rand() limit 5"
     )
     data = db.session.execute(query)
     ques_set = data.fetchall()
 
     db.session.commit()
 
-    with open("test.json", "r") as f:
-        data = json.load(f)
+    # print((ques_set))
+
     temp_list = []
 
-    for i in range(5):
-        random_number = random.randint(1, 6)
-        temp_list.append(random_number)
+    for ques in ques_set:
+        data = list(ques)
+        temp_dict = {}
+        for e in data:
+            temp_dict['Q_id'] = data[0]
+            temp_dict['Questions'] = data[1]
+            temp_dict['level'] = data[2]
+            temp_dict['topics'] = data[3]
+            temp_dict['category'] = data[4]
+        temp_list.append(temp_dict)
 
-    ques_id_list = list(set(temp_list[:2]))
+    with open("test.json","w") as f:
+        json.dump(temp_list,f)
 
-    Q_set = []
-    for k in ques_id_list:
-        for l in range(len(data)):
-            if data[l]["id"] == k:
-                Q_set.append(data[l]['Q'])
+    with open("test.json","r") as f:
+        Q_set = json.load(f)
     
     Q_set = enumerate(Q_set)
     print(Q_set)
-    return render_template("/mockTest.html", ques=Q_set)
+    return render_template("/mockTest.html",ques=Q_set)
 
 
 @app.route("/submit")
@@ -214,8 +219,18 @@ def buy_page():
     return render_template("/buy_page.html")
 
 @app.route("/products")
+
 def products():
-    return render_template("/products.html")
+    product_query = text(
+        f"select * from products"
+    )
+    data = db.session.execute(product_query)
+    products = data.fetchall()
+    
+    db.session.commit()
+
+    # print(products)
+    return render_template("/products.html",products = products)
 
 
 if __name__ == "__main__":

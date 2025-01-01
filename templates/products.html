@@ -14,20 +14,15 @@
       <h1>Products</h1>
     </center>
     <section class="product-list">
+      {% for product in products %}
       <div class="product-card">
         <img src="path/to/image.jpg" alt="Product Image" />
-        <h2>Product Name</h2>
-        <h4>Price: $99.99</h4>
+        <h2>{{product[1]}}</h2>
+        <h4>Price: {{product[3]}}</h4>
         <h5>Rating: 4.5/5</h5>
         <h5>Seller: Seller Name</h5>
       </div>
-      <div class="product-card">
-        <img src="path/to/image2.jpg" alt="Product Image" />
-        <h2>Another Product</h2>
-        <h4>Price: $79.99</h4>
-        <h5>Rating: 4.0/5</h5>
-        <h5>Seller: Another Seller</h5>
-      </div>
+      {% endfor %}
     </section>
   </body>
 </html>

@@ -19,29 +19,43 @@
       </div>
       <div>
         <h1>Teachers</h1>
-        <h3>75</h3>
+        <h3 id="total_teachers">75</h3>
       </div>
       <div>
         <h1>Staff</h1>
-        <h3>50</h3>
+        <h3 id="total_staff">55</h3>
+      </div>
+      <div>
+        <h1>Total Members</h1>
+        <h3 id="total_members"></h3>
       </div>
     </section>
     <hr />
     <section>
       <div>
         <h1>Total Gross Revenue</h1>
-        <h3>$1,000,000</h3>
+        <h3 id="total_gross_revenue">$1,000,000</h3>
       </div>
       <div>
         <h1>Total Net Revenue</h1>
-        <h3>$750,000</h3>
+        <h3 id="total_net_revenue">$750,000</h3>
+      </div>
+      <div>
+        <h1>Total Wages</h1>
+        <h3 id="total_wages"></h3>
       </div>
     </section>
     <hr />
     <section class="chart">
-      <h1>Month-on-Month Gross Revenue</h1>
+      <h1>Month-on-Month Sales</h1>
       <div>
         <canvas id="revenueChart" width="200" height="100"></canvas>
+      </div>
+    </section>
+    <section class="chart2">
+      <h1>courses vs no-of-choice</h1>
+      <div>
+        <canvas id="courses_popularity_chart" width="200" height="100"></canvas>
       </div>
     </section>
     <script src="{{url_for('static',filename='admin.js')}}"></script>

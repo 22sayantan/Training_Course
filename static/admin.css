@@ -36,7 +36,7 @@ a,button{
     color: #444777;
     font-size: 14px;
 }
-.chart {
+.chart,.chart2{
     width: 100%;
     height: 40rem;
     margin: 20px 0;
@@ -51,7 +51,7 @@ a,button{
     flex-direction: column;
 }
 
-.chart div {
+.chart div,.chart2 div {
     width: 70%;
     height: 34rem;
     display: flex;
