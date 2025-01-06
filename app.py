@@ -123,8 +123,7 @@ def course_details(id):
     db.session.commit()
 
     return render_template(
-        "/course_details.html", course=course_bio, modules=modules, topics=topics
-    )
+        "/course_details.html", course=course_bio, modules=modules, topics=topics)
 
 
 @app.route("/update", methods=["POST", "GET"])
@@ -144,14 +143,22 @@ def update():
 @app.route("/mockTest")
 def mockTest():
     query = text(
-        "select * from study.interview_questions order by rand() limit 5"
+        "select * from study.interview_questions where topics in ('sql','pandas','oops','python') order by rand() limit 25"
     )
+    query2 = text(
+        "select * from study.interview_questions where topics in ('ML','numpy') order by rand() limit 5"
+    )
+    
     data = db.session.execute(query)
     ques_set = data.fetchall()
+    
+    data2 = db.session.execute(query2)
+    ques_set2 = data2.fetchall()
 
     db.session.commit()
 
     # print((ques_set))
+    # print((ques_set2))
 
     temp_list = []
 
@@ -171,10 +178,31 @@ def mockTest():
 
     with open("test.json","r") as f:
         Q_set = json.load(f)
+
+    temp_list2 = []
+
+    for ques in ques_set2:
+        data = list(ques)
+        temp_dict = {}
+        for e in data:
+            temp_dict['Q_id'] = data[0]
+            temp_dict['Questions'] = data[1]
+            temp_dict['level'] = data[2]
+            temp_dict['topics'] = data[3]
+            temp_dict['category'] = data[4]
+        temp_list2.append(temp_dict)
+
     
+    with open("test2.json","w") as f:
+        json.dump(temp_list2,f)
+
+    with open("test2.json","r") as f:
+        Q_set2 = json.load(f)
+
     Q_set = enumerate(Q_set)
-    print(Q_set)
-    return render_template("/mockTest.html",ques=Q_set)
+    Q_set2 = enumerate(Q_set2)
+    # print(Q_set)
+    return render_template("/mockTest.html",ques=Q_set,ques2=Q_set2)
 
 
 @app.route("/submit")

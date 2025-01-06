@@ -58,6 +58,22 @@
         <canvas id="courses_popularity_chart" width="200" height="100"></canvas>
       </div>
     </section>
+    <section class="update_questions">
+      <form action="">
+        <h1>update_questions</h1>
+        <label for="question">Question</label><br>
+        <input type="text" id="question" /><br>
+        <label for="topics">topics</label><br>
+        <input type="text" id="topics" /><br>
+        <label for="level">level</label><br>
+        <select name="" id="">
+          <option value="easy">easy</option>
+          <option value="medium">medium</option>
+          <option value="hard">hard</option>
+        </select><br>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
     <script src="{{url_for('static',filename='admin.js')}}"></script>
   </body>
 </html>

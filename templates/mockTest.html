@@ -2,26 +2,42 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='mockTest.css') }}"
 />
-<div class="container">
-  <h1>Mock Test</h1>
-  <form id="testForm">
+<section class="container">
+  <section id="testForm">
+    <p>
+      <h2>Mock Test (old)</h2>
+    </p>
     {% for index, q in ques %}
     <div class="question">
-      <h3>{{index+1}}) {{q['Questions']}}</h3>
-      <h5 style="font-weight: normal;">[Q-id: {{q['Q_id']}}, Level: {{q['level']}}, topics: {{q['topics']}}, category:{{q['category']}}]</h5>
-      {% endfor %}
+      <p>
+        <span>{{index+1}}) {{q['Questions']}}</span>&emsp;
+        <span style="font-size: 12px"> [{{q['topics']}},{{q['level']}}] </span>
+      </p>
     </div>
-    <div class="btn-sec">
-      <button type="button" onclick="submitTest()" class="submit-btn">
-        Submit
-      </button>
-      <button type="button" onclick="window.print()" class="print-btn">
-        Print
-      </button>
+    {% endfor %}
+  </section>
+  <hr />
+  <section id="testForm2">
+    <h2><u>Mock Test (new)</u></h2>
+    
+    {% for index, q in ques2 %}
+    <div class="question">
+      <p class="ques">
+        <span>{{index+1}}) {{q['Questions']}}</span>&emsp;
+        <span style="font-size: 12px"> [{{q['topics']}},{{q['level']}}] </span>
+      </p>
     </div>
-  </form>
-  <div id="result"></div>
-</div>
+    {% endfor %}
+  </section>
+  <div class="btn-sec">
+    <button type="button" onclick="submitTest()" class="submit-btn">
+      Submit
+    </button>
+    <button type="button" onclick="window.print()" class="print-btn">
+      Print
+    </button>
+  </div>
+</section>
 <script>
   function submitTest() {
     const correctAnswers = {
