@@ -33,11 +33,16 @@ h2 {
   line-height: 10px;
 }
 
+#testform .question{
+  margin: 10px 0;
+  padding: 0;
+}
+
 #testform2 .question{
   margin: 10px 0;
   padding: 0;
 }
-.ques{
+.ques0,.ques{
   margin: 0;
   padding: 0;
   line-height: 1.5;

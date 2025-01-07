@@ -1,7 +1,7 @@
 import json
 import random
 
-from flask import Flask, render_template, request, url_for, jsonify, json
+from flask import Flask, render_template, request,redirect, url_for, jsonify, json
 from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
@@ -126,18 +126,20 @@ def course_details(id):
         "/course_details.html", course=course_bio, modules=modules, topics=topics)
 
 
-@app.route("/update", methods=["POST", "GET"])
+@app.route("/update", methods=["GET","POST"])
 def update():
     # fetch form data:::
+    # selected_option = None
     if request.method == 'POST':
-        title = request.form['title']
-        tech = request.form['tech']
-        duration = request.form['duration']
-        price = request.form['price']
-        print(title,tech,duration,price)
-        return render_template('/course_CRUD.html')
-    else:
-        return render_template('/course_CRUD.html')
+        print(request.form)
+        selected_option = request.form.get("option")
+        if selected_option:
+            print(selected_option)
+        else:
+            print("no option selected!")
+        return redirect(url_for('update'))
+
+    return render_template('/course_CRUD.html')
 
 
 @app.route("/mockTest")

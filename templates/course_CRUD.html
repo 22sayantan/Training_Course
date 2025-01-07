@@ -1,42 +1,52 @@
 {% extends 'base.html' %} {% block content %}
 <h1>This is Course CRUD page</h1>
 
-<form id="myForm">
+<form id="myForm" method="post">
   <p>Select your choice:</p>
   <input
     type="radio"
     id="course"
-    name="color"
+    name="option"
     value="course"
-    onchange="getSelectedColor()"
+    onchange="getSelectedColor(this)"
     checked
   />
   Course
   <input
     type="radio"
     id="module"
-    name="color"
+    name="option"
     value="module"
-    onchange="getSelectedColor()"
-    />
-    Module <br />
-    <p id="result"></p>
-  </form>
-  
-  <form id="new_course" action="#" method="POST">
-    <h2>Add New Course</h2>
-    <label for="title">title</label><br />
-    <input type="text" name="title" /><br />
-    <label for="tech">tech</label><br />
-    <input type="text" name="tech" /><br />
-    <label for="duration">duration</label><br />
-    <input type="text" name="duration" /><br />
-    <label for="price">price</label><br />
-    <input type="text" name="price" /><br />
-    <input type="submit" value="Submit" />
-  </form>
-  
-  <form id="new_module" action="#" method="POST" style="display: none;">
+    onchange="getSelectedColor(this)"
+  />
+  Module
+  <input
+    type="radio"
+    id="question"
+    name="option"
+    value="question"
+    onchange="getSelectedColor(this)"
+  />
+  Questions <br />
+  <!-- <p id="result"></p> -->
+</form>
+
+<form id="new_course" action="/" method="POST">
+  <h2>Add New Course</h2>
+  <label for="title">title</label><br />
+  <input type="text" name="title" /><br />
+  <label for="tech">tech</label><br />
+  <input type="text" name="tech" /><br />
+  <label for="duration">duration</label><br />
+  <input type="text" name="duration" /><br />
+  <label for="price">price</label><br />
+  <input type="text" name="price" /><br />
+  <input type="submit" value="Submit" />
+</form>
+
+<!-- ==================== "Question Form"  ====================== -->
+
+<form id="new_module" action="/" method="POST" style="display: none">
   <h2>Add New Module</h2>
   <label for="title">title</label><br />
   <input type="text" name="title" /><br />
@@ -44,7 +54,24 @@
   <input type="text" name="tech" /><br />
   <label for="duration">duration</label><br />
   <input type="text" name="duration" /><br />
+  <input type="submit" value="Submit" />
 </form>
+
+<!-- ==================== "Question Form"  ====================== -->
+
+<form id="new_question" action="#" method="POST" style="display: none">
+  <h2>Add New Question</h2>
+  <label for="question">question</label><br />
+  <input type="text" name="question" /><br />
+  <label for="level">level</label><br />
+  <input type="text" name="level" /><br />
+  <label for="topic">topic</label><br />
+  <input type="text" name="topic" /><br />
+  <label for="category">category</label><br />
+  <input type="text" name="category" /><br />
+  <input type="submit" value="Submit" />
+</form>
+
 <script src="{{url_for('static',filename = 'crud.js')}}"></script>
 
 <a href="/">
