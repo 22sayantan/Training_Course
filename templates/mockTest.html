@@ -4,31 +4,19 @@
 />
 <section class="container">
   <section id="testForm">
-    <p>
-      <h2>Mock Test (old)</h2>
-    </p>
     {% for index, q in ques %}
+    <p>
+      <h2><u>{{q['topic']}}</u></h2>
+    </p>
     <div class="question">
       <p class="ques0">
-        <span>{{index+1}}) {{q['Questions']}}</span>&emsp;
-        <span style="font-size: 12px"> [{{q['topics']}},{{q['level']}}] </span>
+        <span>({{index+1}}) {{q['Ques-Set'][0][1]}}</span>&emsp;
+        <span style="font-size: 12px"> [{{q['Ques-Set'][0][2]}},{{q['Ques-Set'][0][3]}}] </span>
       </p>
     </div>
     {% endfor %}
-  </section>
+  </section>`
   <hr />
-  <section id="testForm2">
-    <h2><u>Mock Test (new)</u></h2>
-    
-    {% for index, q in ques2 %}
-    <div class="question">
-      <p class="ques">
-        <span>{{index+1}}) {{q['Questions']}}</span>&emsp;
-        <span style="font-size: 12px"> [{{q['topics']}},{{q['level']}}] </span>
-      </p>
-    </div>
-    {% endfor %}
-  </section>
   <div class="btn-sec">
     <button type="button" onclick="submitTest()" class="submit-btn">
       Submit

@@ -15,13 +15,16 @@ body {
 }
 
 h2 {
-  text-align: center;
+  text-align: left;
   color: #333;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 20px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 2px;
   font-family: "Playfair Display", serif;
+}
+h2::before{
+  content: "✅";
 }
 
 .question {
@@ -29,23 +32,25 @@ h2 {
 }
 
 #testForm,#testForm2{
-  padding-bottom: 1rem;
-  line-height: 10px;
+  padding-bottom: 0.7rem;
+  line-height: 5px;
 }
 
 #testform .question{
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 0;
 }
 
 #testform2 .question{
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 0;
 }
 .ques0,.ques{
   margin: 0;
   padding: 0;
-  line-height: 1.5;
+  line-height: 1.2;
+  margin-left: 1rem;
+  font-size: 13px;
   /* border: 1px solid black; */
 }
 
